@@ -81,8 +81,8 @@ src_install() {
 
 	if use python; then
 		pushd pjsip-apps/src/python
-		emake -j1 || die "python emake failed."
-		DESTDIR="${D}" emake -j1 install || die "python emake install failed."
+		#python2 setup.py  || die "python emake failed."
+		python2 setup.py build && python2 setup.py install --root="${DESTDIR}" || die "python emake install failed."
 		popd
 	fi
 
